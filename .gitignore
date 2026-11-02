@@ -9,3 +9,6 @@ node_modules/
 
 # Local secrets
 .env
+
+# Local AI assistant config
+.claude/
