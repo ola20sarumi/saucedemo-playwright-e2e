@@ -94,3 +94,7 @@ The nightly run matters because the site under test can change even when this re
 - **Logging in through the UI in every test.** This is simple and keeps each test independent, at the cost of a few seconds per test. At larger scale, I'd log in once in a setup project and reuse the session through `storageState`.
 - **Testing a public site I don't control.** The site could change or go down without warning. The nightly run makes that visible quickly. Against a real product, I'd run the suite against a dedicated test environment instead.
 - **UI tests only.** A natural next layer would be API tests (Playwright's `request` fixture) for faster checks of business rules, plus accessibility checks with `@axe-core/playwright` and visual regression with `toHaveScreenshot()`.
+
+## How this was built
+
+Built with AI assistance (Claude Code). I directed the architecture and reviewed every change; the design decisions above are mine and I'm happy to walk through any of them.
