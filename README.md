@@ -25,9 +25,9 @@ The 3 critical-path tests (login, logout, full purchase) are tagged `@smoke` so 
 
 ## Tech stack
 
-- [Playwright Test](https://playwright.dev) with TypeScript
-- ESLint (`typescript-eslint`, `eslint-plugin-playwright`) and Prettier
-- GitHub Actions, with the HTML report published to GitHub Pages
+- [Playwright Test](https://playwright.dev) 1.64 with TypeScript 6 (strict mode)
+- ESLint 10 (`typescript-eslint`, `eslint-plugin-playwright`) and Prettier
+- GitHub Actions on Ubuntu 24.04 / Node 22, with the HTML report published to GitHub Pages
 
 ## Project structure
 
@@ -81,9 +81,16 @@ The nightly run matters because the site under test can change even when this re
 ## Design decisions
 
 - **Page Object Model.** Locators and page actions live in `pages/`, so specs read as user behaviour (`inventoryPage.addToCart('Sauce Labs Backpack')`) and a UI change is fixed in one place, not in every test.
-- **Fixtures instead of `beforeEach` setup.** Page objects are passed into each test through `test.extend`. Tests only ask for what they need, and setup can't be forgotten or duplicated.
+- **Page objects as fixtures.** Tests receive page objects through `test.extend` (`async ({ loginPage, cartPage }) => …`) instead of constructing them by hand. Each test declares exactly what it depends on, and adding a page object means one new fixture, not edits to every spec. `beforeEach` is kept only for the user journey that sets up a test (such as logging in), so the setup steps stay visible in the spec.
 - **Locator strategy.** Elements are found by role (`getByRole`) or by the app's own `data-test` attributes (`getByTestId`), never by CSS classes or DOM structure. These are the locators least likely to break when the UI is restyled.
 - **Data-driven tests.** Invalid-login cases, sort orders and required checkout fields are tables in `test-data/` or at the top of the spec. Adding a case means adding a row, not copying a test.
 - **Exact assertions.** Error tests check the full message text, so a test fails if the wrong error appears, not just when no error appears. Sorting tests derive the expected order from what the page actually shows instead of a hard-coded list.
 - **Web-first assertions only.** Every check uses Playwright's auto-retrying `expect(locator)`, so there are no fixed waits. ESLint enforces this and also catches any missing `await`, the most common cause of flaky tests.
 - **Configuration from the environment.** The base URL and credentials come from environment variables with safe defaults, so the same suite could run against staging with secrets injected by CI.
+- **A pinned CI environment.** CI originally ran on `ubuntu-latest`. When GitHub moved that label to Ubuntu 26.04, every browser job failed before a single test ran, because the Playwright version in use couldn't install browsers there. The runner image and Node version are now pinned, so the build only changes when this repo changes, and environment upgrades become deliberate, reviewable pull requests.
+
+## Trade-offs and next steps
+
+- **Logging in through the UI in every test.** This is simple and keeps each test independent, at the cost of a few seconds per test. At larger scale, I'd log in once in a setup project and reuse the session through `storageState`.
+- **Testing a public site I don't control.** The site could change or go down without warning. The nightly run makes that visible quickly. Against a real product, I'd run the suite against a dedicated test environment instead.
+- **UI tests only.** A natural next layer would be API tests (Playwright's `request` fixture) for faster checks of business rules, plus accessibility checks with `@axe-core/playwright` and visual regression with `toHaveScreenshot()`.
