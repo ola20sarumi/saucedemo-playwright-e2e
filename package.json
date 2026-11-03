@@ -1,5 +1,5 @@
 {
-  "name": "simple-login-automation",
+  "name": "saucedemo-playwright-e2e",
   "version": "1.0.0",
   "description": "End-to-end UI test suite for the Sauce Demo store, built with Playwright and TypeScript using the Page Object Model.",
   "scripts": {

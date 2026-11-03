@@ -1,11 +1,11 @@
 # Sauce Demo E2E Test Suite
 
-[![Playwright Tests](https://github.com/ola20sarumi/simple-login-automation/actions/workflows/playwright.yml/badge.svg)](https://github.com/ola20sarumi/simple-login-automation/actions/workflows/playwright.yml)
-[![Latest test report](https://img.shields.io/badge/report-latest-45ba4b?logo=playwright)](https://ola20sarumi.github.io/simple-login-automation/)
+[![Playwright Tests](https://github.com/ola20sarumi/saucedemo-playwright-e2e/actions/workflows/playwright.yml/badge.svg)](https://github.com/ola20sarumi/saucedemo-playwright-e2e/actions/workflows/playwright.yml)
+[![Latest test report](https://img.shields.io/badge/report-latest-45ba4b?logo=playwright)](https://ola20sarumi.github.io/saucedemo-playwright-e2e/)
 
-End-to-end UI tests for [Sauce Demo](https://www.saucedemo.com), a demo e-commerce store, written in **Playwright** and **TypeScript** using the **Page Object Model**. The suite covers the core user journeys (login, browsing, cart and checkout) across **Chromium, Firefox and WebKit**, and runs in GitHub Actions on every push, every pull request and nightly.
+End-to-end tests for the full [Sauce Demo](https://www.saucedemo.com) shop flow (login, product sorting, cart and checkout) across Chromium, Firefox and WebKit, written in Playwright and TypeScript with the Page Object Model and run in GitHub Actions on every push, every pull request and nightly.
 
-**[View the latest test report →](https://ola20sarumi.github.io/simple-login-automation/)**
+**[View the latest test report →](https://ola20sarumi.github.io/saucedemo-playwright-e2e/)**
 
 ![HTML report showing 54 passing tests across Chromium, Firefox and WebKit](docs/report-screenshot.png)
 
