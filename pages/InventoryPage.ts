@@ -45,6 +45,10 @@ export class InventoryPage {
     await this.item(productName).getByRole('button', { name: 'Remove' }).click();
   }
 
+  async openProduct(productName: string) {
+    await this.itemNames.filter({ hasText: productName }).click();
+  }
+
   async sortBy(option: SortOption) {
     await this.sortSelect.selectOption(option);
   }
