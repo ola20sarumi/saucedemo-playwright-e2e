@@ -5,7 +5,7 @@
 
 End-to-end and accessibility tests for the full [Sauce Demo](https://www.saucedemo.com) shop flow (login, product sorting, cart and checkout) across Chromium, Firefox and WebKit, plus API tests against a public practice API, written in Playwright and TypeScript with the Page Object Model and run in GitHub Actions on every push, every pull request and nightly.
 
-**[View the latest test report →](https://ola20sarumi.github.io/saucedemo-playwright-e2e/)**
+**[View the latest test report →](https://ola20sarumi.github.io/saucedemo-playwright-e2e/)** · **[Read the test plan →](docs/TEST_PLAN.md)**
 
 ![HTML report showing all 86 tests passing, including the API and accessibility tests](docs/report-screenshot.png)
 
@@ -42,6 +42,7 @@ The critical-path tests (login, logout, full purchase, plus the API health check
 ├── test-data/      Users, checkout data, booking data and the accessibility baseline
 ├── tests/          UI specs: login, inventory (sorting and cart), checkout, accessibility
 │   └── api/        API specs (Restful-booker)
+├── docs/           Test plan and the report screenshot
 ├── .github/        CI workflow
 └── playwright.config.ts
 ```
