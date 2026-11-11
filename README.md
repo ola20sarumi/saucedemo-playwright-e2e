@@ -7,7 +7,7 @@ End-to-end and accessibility tests for the full [Sauce Demo](https://www.saucede
 
 **[View the latest test report →](https://ola20sarumi.github.io/saucedemo-playwright-e2e/)**
 
-![HTML report showing 54 passing tests across Chromium, Firefox and WebKit](docs/report-screenshot.png)
+![HTML report showing all 86 tests passing, including the API and accessibility tests](docs/report-screenshot.png)
 
 ## What's covered
 
