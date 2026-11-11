@@ -212,3 +212,7 @@ In rough priority order:
 5. **Manual accessibility pass:** keyboard-only navigation and a screen-reader run through the journey.
 6. **Mobile viewports:** run the smoke tests on Playwright's phone profiles.
 7. **API schema checks:** validate response shapes against a schema, not just values.
+
+---
+
+_Written by [ola20sarumi](https://github.com/ola20sarumi), and checked with Claude (Claude Code) for accuracy and completeness._
